@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Retailer Chatbot</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" sizes="16x16" href="images/ProPlay.jpeg">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>Sports Retailer Chatbot</h2>
+      <button id="dark-mode-toggle">🌙</button>
+    </div>
+    <div id="chat-box">
+      <!-- Predefined questions for a sports retailer -->
+      <button class="question-button" data-question="opening-hours">What are your opening hours?</button>
+      <button class="question-button" data-question="product-availability">Do you have Nike Boots in stock?</button>
+      <button class="question-button" data-question="delivery-options">What are your delivery options?</button>
+      <button class="question-button" data-question="return-policy">What is your return policy?</button>
+      <button class="question-button" data-question="store-location">Where is your store located?</button>
+      <button class="question-button" data-question="membership-benefits">What are the benefits of a membership?</button>
+<!-- Add this "Other" button alongside your other question buttons -->
+<button class="question-button" id="other-button" data-question="other">Other</button>
+
+
+<!-- Popup Modal (hidden by default) -->
+      <div id="agent-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <p class="modal-message">Would you like to send a message to a human agent?</p>
+          <button id="confirm-agent">Yes, contact agent</button>
+          <button id="cancel-agent">No, thanks</button>
+        </div>
+      </div>
+      <div id="answer-box">
+        <p id="answer-text"></p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
