@@ -20,7 +20,7 @@ function sendQuestionToBackend(question) {
 
   if (question === 'other') {
     answerText.textContent = ''; 
-    return; // Exit the function early
+    return; // Exit the function if other is selected 
   }
 
   // Send question to API Gateway
@@ -109,7 +109,7 @@ confirmAgent.addEventListener('click', () => {
 
 function sendToAgentAPI() {
 
-  fetch('https://030ab7z575.execute-api.us-east-1.amazonaws.com/', {
+  fetch('https://030ab7z575.execute-api.us-east-1.amazonaws.com', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ 
