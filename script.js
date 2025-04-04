@@ -35,6 +35,11 @@ function sendQuestionToBackend(question) {
     .then(data => {
       // Display the response
       answerText.textContent = data.answer;
+      console.log(data.answer);
+      console.log(data);
+      console.log(data.json);
+      console.log(response);
+
     })
     .catch(error => {
       console.error('Error:', error);
@@ -71,23 +76,34 @@ function updateToggleIcon(theme) {
 
 
 
-// Getting Dom for other button 
-const otherButton = document.getElementById('other-button');
-
-//  Modal is the pop up 
+// Getting DOM elements
 const modal = document.getElementById('agent-modal');
 const closeModal = document.querySelector('.close-modal');
-
-//Confirm and cancell buttons
 const confirmAgent = document.getElementById('confirm-agent');
 const cancelAgent = document.getElementById('cancel-agent');
+const userInput = document.getElementById('user-input');
+const submitCustomQuestion = document.getElementById('submit-custom-question');
 
-// Open modal when "Other" button is clicked
-otherButton.addEventListener('click', () => {
-  modal.style.display = 'flex'; // Show modal
+// Open modal when submit button is clicked
+submitCustomQuestion.addEventListener('click', () => {
+  const question = userInput.value.trim();
+  
+  if (!question) {
+    alert('Please enter your question first!');
+    return;
+  }
+  
+  // Set the question on the confirm button
+  confirmAgent.dataset.question = question;
+  
+  // Update modal message to show the actual question
+  document.querySelector('.modal-message').textContent = 
+    `Send this question to agent: "${question}"?`;
+  
+  modal.style.display = 'flex';
 });
 
-// Close modal when X or "No" is clicked
+// Close modal handlers
 closeModal.addEventListener('click', () => {
   modal.style.display = 'none';
 });
@@ -96,27 +112,20 @@ cancelAgent.addEventListener('click', () => {
   modal.style.display = 'none';
 });
 
-// Handle "Yes" button (send to agent)
+// Handle confirm button click
 confirmAgent.addEventListener('click', () => {
-  modal.style.display = 'none';
-  alert('Your request has been sent to an agent. They will contact you shortly.');
-  //sendToAgentAPI();
-});
-
-
-
-// Function to send to alert to agent 
-
-function sendToAgentAPI() {
-
-  fetch('https://030ab7z575.execute-api.us-east-1.amazonaws.com', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ 
-    userQuery: 'User requested human assistance',
-    contactInfo: 'user@example.com' // for collecting user email, not implemented 
-  })
-});
+  // Get the question from the confirm button's data attribute
+  const question = confirmAgent.dataset.question;
   
-
-}
+  if (!question) {
+    alert('No question found!');
+    return;
+  }
+  
+  modal.style.display = 'none';
+  alert(`Your question "${question}" has been sent to an agent. They will contact you shortly.`);
+  
+  
+  // Clear the input field
+  userInput.value = '';
+});

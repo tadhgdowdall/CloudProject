@@ -146,3 +146,23 @@
 #cancel-agent {
   background-color: #f0f0f0;
 }
+.custom-question-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.custom-input {
+  flex: 1;
+  padding: 16px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+#submit-custom-question {
+  padding: 16px 24px;
+  white-space: nowrap;
+}

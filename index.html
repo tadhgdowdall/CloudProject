@@ -22,7 +22,22 @@
       <button class="question-button" data-question="store-location">Where is your store located?</button>
       <button class="question-button" data-question="membership-benefits">What are the benefits of a membership?</button>
 <!-- Add this "Other" button alongside your other question buttons -->
-<button class="question-button" id="other-button" data-question="other">Other</button>
+<div class="custom-question-container">
+  <input 
+    type="text" 
+    id="user-input" 
+    placeholder="Ask your question here"
+    class="custom-input"
+  >
+  <button id="submit-custom-question" class="question-button">
+    Ask
+  </button>
+</div>
+
+
+
+        <!-- <input type="text" id="user-input" placeholder="Input Your Question">
+<button class="question-button" id="other-button" data-question="">Other</button> -->
 
 
 <!-- Popup Modal (hidden by default) -->
@@ -30,7 +45,7 @@
         <div class="modal-content">
           <span class="close-modal">&times;</span>
           <p class="modal-message">Would you like to send a message to a human agent?</p>
-          <button id="confirm-agent">Yes, contact agent</button>
+          <button id="confirm-agent" data-question="">Yes, contact agent</button>
           <button id="cancel-agent">No, thanks</button>
         </div>
       </div>
